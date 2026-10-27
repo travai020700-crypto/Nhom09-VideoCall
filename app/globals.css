@@ -1,0 +1,275 @@
+:root {
+  --bg-a: #edf2f8;
+  --bg-b: #f6f0f4;
+  --ink: #283042;
+  --muted: #6c768a;
+  --line: rgba(40, 48, 66, 0.1);
+  --panel: rgba(255, 255, 255, 0.72);
+  --accent: #5b6bc4;
+  --accent-hover: #4f5eb4;
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-a) 0%, var(--bg-b) 100%) fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Trang chủ ---------- */
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 80px 24px 64px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.lede {
+  margin: 14px 0 44px;
+  max-width: 44ch;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  padding: 28px 28px 24px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 1px 2px rgba(40, 48, 66, 0.04),
+    0 18px 40px -20px rgba(40, 48, 66, 0.14);
+}
+
+.panel h2 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.panel .hint {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Thành viên */
+.members { list-style: none; margin: 14px 0 0; padding: 0; }
+
+.members li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.members li + li { border-top: 1px solid var(--line); }
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: #e3e8f6;
+}
+
+.members li:nth-child(5n + 2) .avatar { background: #f3e3ea; }
+.members li:nth-child(5n + 3) .avatar { background: #e0f0ea; }
+.members li:nth-child(5n + 4) .avatar { background: #f5ead9; }
+.members li:nth-child(5n + 5) .avatar { background: #e9e3f5; }
+
+.member-name { font-weight: 500; font-size: 0.95rem; }
+.member-id {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Nút */
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: 500 0.92rem/1 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+.btn-soft {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn-soft:hover {
+  border-color: rgba(40, 48, 66, 0.2);
+  box-shadow: 0 6px 18px -8px rgba(40, 48, 66, 0.25);
+}
+
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+
+.btn-quiet { background: transparent; color: var(--muted); }
+.btn-quiet:hover { color: var(--ink); }
+
+.btn:focus-visible,
+.link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Người dùng đã đăng nhập */
+.me { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.me img { width: 44px; height: 44px; border-radius: 50%; }
+.me-name { font-weight: 500; }
+.me-mail { color: var(--muted); font-size: 0.85rem; font-weight: 300; }
+
+.quiet-text { color: var(--muted); font-weight: 300; margin: 0; }
+
+/* ---------- Phòng gọi ---------- */
+.room {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  background: #1e2433;
+}
+
+/* Chỉnh bảng màu của LiveKit cho hợp tông */
+.room[data-lk-theme="default"] {
+  --lk-bg: #1e2433;
+  --lk-bg2: #272f42;
+  --lk-bg3: #323b52;
+  --lk-fg: #e8ecf4;
+  --lk-control-fg: #e8ecf4;
+  --lk-control-bg: #2b344a;
+  --lk-control-hover-bg: #364059;
+  --lk-accent-fg: #ffffff;
+  --lk-accent-bg: #6f7fd6;
+  --lk-accent2: #8a98e6;
+  --lk-danger: #d9667a;
+  --lk-danger-fg: #ffffff;
+  --lk-border-radius: 14px;
+  font-family: var(--font);
+}
+
+.side {
+  flex: none;
+  width: 252px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 20px 24px;
+  color: #e8ecf4;
+  background: #232a3b;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.side-title { margin: 0; font-size: 1rem; font-weight: 500; }
+.side-count {
+  margin: 4px 0 22px;
+  color: #98a2b8;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.people { list-style: none; margin: 0; padding: 0; overflow: auto; }
+
+.people li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 6px;
+  border-radius: 12px;
+}
+
+.person-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e8ecf4;
+  background: #38425c;
+  transition: box-shadow 0.25s ease;
+}
+
+.people li.speaking .person-avatar { box-shadow: 0 0 0 2px #8a98e6; }
+
+.person-name {
+  min-width: 0;
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.person-me { color: #98a2b8; font-size: 0.8rem; font-weight: 300; }
+
+.side .link {
+  margin-top: auto;
+  padding: 10px 6px;
+  color: #98a2b8;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+.side .link:hover { color: #e8ecf4; }
+
+.main { flex: 1; min-width: 0; }
+
+.state-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 300;
+}
+.state-screen p { margin: 0 0 18px; }
+
+@media (max-width: 760px) {
+  .side { display: none; }
+  .page { padding-top: 56px; }
+  .panel { padding: 22px 20px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
